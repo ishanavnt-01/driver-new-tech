@@ -1,0 +1,274 @@
+key,value
+0,0
+1,1
+30,30
+main.title,Ashlar Space & Time Database Builder v2.0
+subtitle,Road Incident Data System
+subtitle2,DRIVER 2.0 ADMIN
+login.title,Login with DRIVER 2.0 Account
+username.required,Username is required
+password.required,Password is required
+login,Login
+or,Or
+gmail.login,Login with Gmail Account
+gogle.login,Login with Google
+bulk.upload,Bulk Upload
+upload.for,Upload For
+select,Select
+incident,incident
+intervention,intervention
+black.spots,black_spots
+upload.json,Browse and Upload Json/csv file
+upload,Upload
+cancel,Cancel
+upload.bulk,Upload Bulk Data
+id,ID
+filename,File Name
+admin.username,Admin Username
+success.count,Success Count
+error.count,Error Count
+status,Status
+validation.log,Validation Log
+creation.date,Creation Date
+demo,Demo
+abc,ABC
+process,Process
+demo.data,Demo Data
+date.str,12/9/2020
+select.country,Select Country
+select.country.marker,* Please select country using marker to set the country code
+country,Country
+country.code,Country Code
+save,Save
+city.province,City/Province
+edit.city,Edit City
+region,Region:
+update,Update
+add.movement.code,Add Movement Code
+select.crash.type,Select Crash Type
+upload.ct.image,Upload Crash Type Image
+file.required,File is required
+delete,Delete
+edit.crash.diagram,Edit Crash Diagram
+add.crash.diagram,Add new Crash Diagram
+trash.movement.code,Trash Movement Codes
+view.movement.code,View movement codes
+movement.code.for,Movement codes for
+back.to.crash.type,Back to Crash Type
+confirm.action,Confirm Action
+sure?,Are You Sure ?
+ok,Ok
+threshold.settings,Duplicate Threshold Settings
+threshold,Duplicate threshold (in degrees)
+upload.shape,Upload your zipped shapefile  once uploaded  select a primary field for display
+add.geo,Add New Geography
+label.required,Label is required
+geo.shape,Geography Shapefile
+shape.required,A shapefile is required
+display.field,Display Field (select after upload)
+geo.color,Geography Color
+red,red
+blue,blue
+green,green
+geo.files,Geography Files
+add.shape,Add new shapefile
+edit.geo,Edit Geography
+geo.save,Click 'save' to commit changes to this geography
+geo.label,Geography Label
+geo.field,Display Field (select after upload)
+driver.title,DRIVER 2.0 AE
+manage.perm,Manage Permissions
+manage.user,Manage Users
+sys.settings,System Settings
+signout,Signout
+role.request,Role Request
+role,Role:
+role.opt1,Super Admin (Tier 1)
+role.opt2,Regional Admin (Tier 2)
+role.opt3,City/Organizational Admin (Tier 3)
+role.opt4,Analyst (Tier 4)
+role.opt5,Tech Analyst (Tier 4)
+role.opt6,Public
+geo,Geography:
+city,City/Province
+regions,Regions
+region2,Autonomous Region in Muslim Mindanao (ARMM)
+region3,Central Luzon (Region III)
+city1,City:
+tawi,Tawi-Tawi
+bohol,Bohol
+cebu,Cebu
+organization,Organization
+send.request,Send Request
+add.organization,Add Organization
+trash,Trash
+edit,Edit
+edit.organization,Edit Organization
+add.record.type,Add New Record Type
+single.title,Single Title
+single.title.required,Single Title is required
+single.title.short,Single Title too short
+plural.title,Plural Title
+plural.title.required,Plural Title is required
+plural.title.short,Plural Title too short
+description,Description
+description.required,Description is required
+description.short,Description too short
+edit.record.type,Edit Record Type
+all.record.types,All Record Types
+add.type,Add new type
+preview,Preview
+intervention.preview,Intervention input form preview
+intervention.details,Intervention Details
+details.intervention,Details for Intervention
+type,TYPE
+incident.preview.form,Incident Input Form Preview
+move.down,Move Down
+move.up,Move Up
+value.required,Value Required
+add,Add
+delete.all,Delete All
+single.title.unique,Single Title is not unique
+allow.multiple,Allow Multiple?
+cost.settings,Cost aggregation settings
+cost.prefix,Cost Prefix
+cost.suffix,Cost Suffix
+related.content,Realted Content Type
+field,Field
+edit.content,Edit Related Content
+image.uploader,Image Uploader Title
+required,Required
+number.field,Number Field Title
+min.value,Minimum Value
+max.value,Maximum Value
+field.type,Field Type
+filter,Filtered/Searchable
+relationship,Relationship Title
+refer,Type of Realted Info to Reference
+selectlist,Select List Title
+display.type,Display Type
+field.options,Field Options
+array.unique,Array must have unique items
+option.value,Option Value
+add.option,Add Option value
+delete.option,Delete Last Option value
+text.field,Text Field Title
+text.options,Text Options
+delete.item,Delete Item
+add.item,Add Item
+delete.last,Delete Last Item
+related.for,Related Content for
+add.content,Add new content
+multiple,[MULTIPLE]
+home,Home
+view.record.types,View all record types
+view.content,View related content
+all.geo,All Geographies
+view.all.geo,View all geographies
+settings,Settings
+change.country,Change Country
+weather.api,Weather API
+duplicate.threshold,Duplicate Threshold
+crash.diagrams,Crash Type and Movement Code
+view.crash.types,View all crash types
+movement.code,Add new movement code
+assign.grp.perm,Assign Group Permission
+group.name,Group Name
+is.admin,Administrator Access
+permission,Permission
+all.permissions,All Permissions
+driver,DRIVER
+signin,Sign IN
+new.account,Create New Account
+first.name,First Name:
+last.name,Last Name:
+username,User Name:
+driver.group,DRIVER Group:
+email,Email:
+mobile,Mobile:
+password,Password:
+confirm.password,Confirm Password:
+create.user,Create User
+modify.account,Modify User Account
+firstname1,First Name
+lastname1,Last Name
+username1,UserName
+email1,Email
+driver.group1,Driver Group
+mobile1,Mobile
+password1,Password
+confirm.password1,Confirm Password
+geo1,Geography
+region1,Region
+organization1,Organization
+is.super,SuperAdmin Access
+is.analyst,Analyst Access
+is.tech,Tech Analyst Access
+edit.grp.perm,Edit Group Permission
+all.users,All Users
+all,All
+filter.group,Filter by groups
+add.user,Add new user
+requested,Requested
+details,Details
+create.account,Create User Account
+select.group,SELECT GROUP
+select.geo,SELECT GEOGRAPHY
+select.region,SELECT REGION
+select.city,SELECT CITY
+select.organization,SELECT ORGANIZATION
+all.groups,All Groups
+add.grp.perm,Add Group Permission
+requested.grp,Requested Group
+full.name,Full Name:
+driver.group2,Driver Group:
+current.city,Current City:
+requested.city,Requested City:
+current.region,Current Region:
+requested.region,Requested Region:
+current.organization,Current Organization:
+requested.organization,Requested Organization:
+approve,Approve
+reject,Reject
+details.user,Details for User Account
+firstname2,FIRST NAME:
+lastname2,LAST NAME:
+username2,USER NAME:
+email2,EMAIL:
+administrator,ADMINISTRATOR?
+yes,YES
+no,NO
+driver.group3,DRIVER GROUP:
+go.back,Go Back
+add.api.provider,Add API Provider
+provider.name,PROVIDER NAME
+client.id,CLIENT ID / API KEY
+client.secret,CLIENT SECRET
+edit.api.provider,Edit API Provider
+weather,Weather
+black.spot,Black Spot severity threshold :
+download.sample,Download sample file
+upload.date,Upload Date
+english,English
+filipino,Filipino
+language,Language
+languages,Languages
+view.all.language,View all Languages
+add.language,Add new Language
+admin.panel,Admin Panel
+user.panel,User Panel
+movement.code.for,Movement code for
+default,default
+file,file
+add.edit.language,Add/Edit Language
+panel,panel
+sample.file,Sample file:
+enter.organization,Enter Organization
+enter.threshold,Enter threshold
+crash.type,"Crash Types
+"
+add.group.name,Add group name
+add.description,Add description
+select.weather,Select Weather
+api.provider,Add API Provider
+add.provider.name,ADD PROVIDER NAME

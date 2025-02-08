@@ -1,0 +1,377 @@
+﻿nlb AWS:
+id : 026787229246
+uname: ami.bajwala@nlbservices.com
+password: xyt**YPz6yeG
+
+kill any port
+sudo fuser -k 8000/tcp
+
+
+
+http://13.57.10.53:8000/api/records/?archived=False&polygon_id=48922bbb-6297-442a-a56f-2383693365c0&jsonb={"driverIncidentDetails":{"Severity":{"_rule_type":"containment","contains":[]}}}&limit=50&occurred_max=2020-04-24T13:26:00.340Z&occurred_min=2020-01-23T18:30:00.000Z&record_type=c72386d2-3bf5-4ecd-a189-586eda340ba9&tilekey=true
+
+
+
+uninstall virtualbox 
+sudo apt purge virtualbox-6.0
+
+install venv and Django
+
+python3 -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+
+# Install Django and Django REST framework into the virtual environment
+pip install django
+pip install djangorestframework
+
+
+*-------------------------------------------------------------------------
+production: 
+username = Ami
+password = admin
+
+*-------------------------------------------------------------------------
+ansible-playbook -i deployment/ansible/inventory/production --user=ubuntu  deployment/ansible/database.yml  deployment/ansible/app.yml     deployment/ansible/celery.yml
+
+*-------------------------------------------------------------------------------
+Change in the playbook 
+
+path deployment/ansible/roles/driver.app/tasks/main.yml (in the starting of the file)
+
+and /home/hp/DRIVER_Latest/DRIVER/deployment/ansible/roles/driver.web/tasks/staging_or_production.yml (before line 16)
+
+
+ - name: Install Pip
+  apt: pkg=python-pip state=present
+
+- name: Install pexpect
+  command: pip install pexpect
+  when: aws_access_key_id is defined
+
+- name: Install awscli
+  command: pip install awscli
+  when: aws_access_key_id is defined
+
+- name: Create aws credentials
+  expect:
+    command: aws configure
+    responses:
+      (?i)aws\saccess: "{{aws_access_key_id}}"
+      (?i)aws\ssecret: "{{aws_secret_access_key}}"
+      (?i)region\sname: "{{aws_region_name}}"
+      (?i)output\sformat: "{{aws_output_format}}"
+  when: aws_access_key_id is defined
+- name: Authenticate to ECR
+  shell: $(aws ecr get-login --region us-east-2 --no-include-email)
+  when: aws_access_key_id is defined
+
+ 
+*-------------------------------------------------------------------------
+to give the access of port 5432 to 0.0.0.0 ip address
+sudo ufw allow from 0.0.0.0/0 to any port 5432
+
+*-------------------------------------------------------------------------
+
+
+*-------------------------------------------------------------------------
+configure celery(vagrant ssh celery) and other server with AWS secret credantials as a root user
+ - sudo apt-get install awscli
+ - aws configure
+
+*-------------------------------------------------------------------------
+
+login to aws using commandline
+
+$(aws ecr get-login --region us-west-1 --no-include-email)
+
+*-------------------------------------------------------------------------
+
+To build all docker images with ECR repo
+
+docker build -f /opt/app/Dockerfile.base -t "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-app" /opt/app
+docker build -f /opt/schema_editor/Dockerfile -t "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-editor" /opt/schema_editor
+docker build -f /opt/web/Dockerfile -t "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-web" /opt/web
+docker build -f /opt/gradle/Dockerfile -t "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-gradle" /opt/gradle
+docker build -f /opt/analysis_tasks/Dockerfile -t "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-analysis" /opt/analysis_tasks
+
+*-------------------------------------------------------------------------
+To push all images to ECR
+
+docker push "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-app:latest"
+docker push "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-editor:latest"
+docker push "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-web:latest"
+docker push "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-gradle:latest"
+docker push "671286140431.dkr.ecr.us-west-1.amazonaws.com/driver-analysis:latest"
+
+*-------------------------------------------------------------------------
+To add to docker container ssh (any production server)
+
+sudo docker ps
+sudo docker exec -ti id_of_driver-app_container bash 
+
+production database password : S1HnvSanv1SmCqsKVGuwLh-7HFpB30mKI_T-VSgjJpU
+
+in database server :
+
+/etc/postgres/version/main/
+
+sudo vi postgresql.conf
+
+add below line:
+	listen_addresses = '*'
+
+sudo vi pg_hba.conf
+
+	host  all  all 0.0.0.0/0 md5
+
+restart postgres service
+
+	sudo service postgresql restart
+
+*-------------------------------------------------------------------------
+create Django project:
+
+	 
+	./scripts/manage.sh startproject projectname
+	 django-admin startproject projectname
+
+create Django APP
+
+	./scripts/manage.sh startapp testdemo
+	django-admin.py startapp testdemo
+
+Run Django app:
+
+	./scripts/manage.sh runserver 0.0.0.0:8000
+
+Django database migration from approot
+
+	./scripts/manage.sh makemigrations appname
+	./scripts/manage.sh migrate appname
+
+*-------------------------------------------------------------------------
+for GDAL error 
+
+	install sudo apt-get install gdal-bin
+*-------------------------------------------------------------------------
+query :  VALUES (2, 'pbkdf2_sha256$36000$m9slJfPtd1tH$YQr8jntzjI0/Q2k/tCfuZunT0PcwZBc42ryt7Iko2ho=', NOW()::TIMESTAMP, TRUE, 'Ami', '', '', 'ami.bajwala@aventior.com', TRUE, TRUE, NOW()::TIMESTAMP);
+*-------------------------------------------------------------------------
+in Django dependencies: configure postgresql
+
+pip install django psycopg2
+
+for postgre
+sudo -u postgres -i
+psql
+\l
+\c driver
+create user and password
+  CREATE USER postgres WITH PASSWORD 'postgres';
+
+\dt
+
+
+To change the ubuntu os from 14.04 to  18.04
+in vagrant file:
+
+line 44-- config.vm.box = "ubuntu/bionic64"
+
+
+uploaD BLACKSPOT JSON
+
+python ./scripts/load_black_spots.py --authz 'Token 36df3ade778ca4fcf66ba998506bdefa54fdff1c' ./scripts/sample_data/black_spots.json
+
+
+Intervention
+
+python ./scripts/load_interventions.py --authz 'Token 36df3ade778ca4fcf66ba998506bdefa54fdff1c' ./scripts/sample_data/interventions_sample_pts.geojson
+
+48772341c5d1cc287008bd7440b106766da10db6
+
+
+incident data
+python ./scripts/load_incidents_v3.py --authz 'Token 96d0e881c5dc44b5420f535fa1ec4136228d3bc9' ./scripts/sample_data/
+60e845b52453cae67f6b4a7e2d1af7b28c357ac6
+866726560269ca77114b1b4cf6f0c02e19b1bcfc
+
+in celery server Philippines to check log
+tail -n1000 /var/log/syslog
+
+
+to create a dump database 
+
+cd866726560269ca77114b1b4cf6f0c02e19b1bcfc866726560269ca77114b1b4cf6f0c02e19b1bcfc
+pwd
+
+
+download postgers dump file from the instance :
+
+scp -i "driver_db_pem.pem" dotc@202.90.158.245:/var/lib/postgresql/driver_1.sql .
+
+scp -i "driver_db_pem.pem" dotc@202.90.158.245:/var/lib/postgresql/driver.sql .
+ssh -i "driver_db_pem.pem" dotc@202.90.158.245:/var/lib/postgresql/driver.sql .
+
+to dump sql file to postgres
+CREATE USER postgres WITH PASSWORD 'postgres';
+psql -h localhost -U postgres -f driver.sql
+
+psql -h 13.57.10.53 -d driver_ph -U postgres -f driver_2.sql
+
+pg_dump -U postgres -h localhost driver_ph > /db.sql
+
+pg_dump -U postgres -h localhost -d driver_philippines > driver_1.sql
+
+import dump  .sql file to postgres
+psql databasename < data_base_dump.sql
+
+create a role to postgresql
+CREATE USER driver WITH PASSWORD 'driver';
+CREATE USER windshaft WITH PASSWORD 'windshaft';
+
+
+To install gdal
+
+sudo add-apt-repository ppa:ubuntugis/ppa && sudo apt-get update
+sudo apt-get update
+sudo apt-get install gdal-bin=2.4.2
+sudo apt-get install libgdal-dev
+export CPLUS_INCLUDE_PATH=/usr/include/gdal
+export C_INCLUDE_PATH=/usr/include/gdal
+pip install GDAL==2.4.2
+
+
+
+for NLB
+https://aws.amazon.com/iam/features/mfa/ 
+
+
+to access database and table in pgadmin 3
+/c advanced_driver
+GRANT CONNECT ON DATABASE advanced_driver TO postgres;
+GRANT USAGE ON SCHEMA public TO postgres;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO postgres;
+
+To run the duplicate record script:
+  python manage.py find_duplicate_records
+
+To run the celery worker : (in root directory)
+  nohup celery -A DRIVER worker --queue=taskworker --loglevel=debug --concurrency=4 --maxtasksperchild=1 &
+To run apache2
+  sudo service apache2 restart
+To start redis
+  sudo service redis restart
+To start postgres
+  sudo service postgresql restart
+To start Python server
+  nohup python manage.py runserver 0.0.0.0:8000 &
+
+  create user postgres
+  Alter USER postgres WITH PASSWORD 'postgres';
+
+  before create extension
+  sudo apt install postgis postgresql-12-postgis-3
+  
+  install qgis
+It seems that I used a wrong string to indicate the repo's address. The correct strings for /etc/apt/sources.list are:
+
+deb https://qgis.org/ubuntugis/ bionic main
+deb-src https://qgis.org/ubuntugis/ bionic main
+
+After editing /etc/apt/sources.list (with sudo nano /etc/apt/sources.list
+in my case), naturally,
+
+$ sudo apt-get update
+and
+
+$ sudo apt-get install qgis python3-qgis qgis-plugin-grass
+
+
+
+
+
+sudo apt install postgresql-12-postgis-3 
+
+
+to get the shaefile from the database :
+query syntex
+  select data ->> 'name' ::varchar as region , uuid ,geom from ashlar_boundarypolygon where boundary_id ::text='c946ad5d-5cd9-4961-b42b-37c9c86194f9'
+
+
+select 
+data ->> 'fips' ::varchar as fips,
+data ->> 'name' ::varchar as name,
+data ->> 'note' ::varchar as note,
+data ->> 'type' ::varchar as type,
+data ->> 'admin' ::varchar as admin,
+data ->> 'gn_id' ::varchar as gn_id,
+data ->> 'gn_a3' ::varchar as gn_a3,
+data ->> 'abbrev' ::varchar as abbrev,
+data ->> 'gns_id' ::varchar as gns_id,
+data ->> 'iso_a2' ::varchar as iso_a2,
+data ->> 'postal' ::varchar as postal,
+data ->> 'region' ::varchar as region,
+data ->> 'sov_a3' ::varchar as sov_a3,
+data ->> 'woe_id' ::varchar as woe_id,
+data ->> 'adm0_a3' ::varchar as adm0_a3,
+data ->> 'adm0_sr' ::varchar as adm0_sr,
+data ->> 'diss_me' ::varchar as diss_me,
+data ->> 'gn_name' ::varchar as gn_name,
+data ->> 'type_en' ::varchar as type_en,
+data ->> 'check_me' ::varchar as check_me,
+data ->> 'datarank' ::varchar as datarank,
+data ->> 'fips_alt' ::varchar as fips_alt,
+data ->> 'geonunit' ::varchar as geonunit,
+data ->> 'gn_level' ::varchar as gn_level,
+data ->> 'gns_adm1' ::varchar as gns_adm1,
+data ->> 'gns_lang' ::varchar as gns_lang,
+data ->> 'gns_name' ::varchar as gns_name,
+data ->> 'latitude' ::varchar as latitude,
+data ->> 'name_alt' ::varchar as name_alt,
+data ->> 'name_len' ::varchar as name_len,
+data ->> 'sub_code' ::varchar as sub_code,
+data ->> 'woe_name' ::varchar as woe_name,
+data ->> 'adm1_code' ::varchar as adm1_code,
+data ->> 'area_sqkm' ::varchar as area_sqkm,
+data ->> 'code_hasc' ::varchar as code_hasc,
+data ->> 'gn_region' ::varchar as gn_region,
+data ->> 'gns_level' ::varchar as gns_level,
+data ->> 'labelrank' ::varchar as labelrank,
+data ->> 'longitude' ::varchar as longitude,
+data ->> 'mapcolor9' ::varchar as mapcolor9,
+data ->> 'scalerank' ::varchar as scalerank,
+data ->> 'wikipedia' ::varchar as wikipedia,
+data ->> 'woe_label' ::varchar as woe_label,
+data ->> 'OBJECTID_1' ::varchar as OBJECTID_1,
+data ->> 'adm0_label' ::varchar as adm0_label,
+data ->> 'adm1_cod_1' ::varchar as adm1_cod_1,
+data ->> 'code_local' ::varchar as code_local,
+data ->> 'featurecla' ::varchar as featurecla,
+data ->> 'gadm_level' ::varchar as gadm_level,
+data ->> 'gn_a1_code' ::varchar as gn_a1_code,
+data ->> 'gns_region' ::varchar as gns_region,
+data ->> 'hasc_maybe' ::varchar as hasc_maybe,
+data ->> 'iso_3166_2' ::varchar as iso_3166_2,
+data ->> 'mapcolor13' ::varchar as mapcolor13,
+data ->> 'name_local' ::varchar as name_local,
+data ->> 'provnum_ne' ::varchar as provnum_ne,
+data ->> 'region_cod' ::varchar as region_cod,
+data ->> 'region_sub' ::varchar as region_sub,
+data ->> 'sameascity' ::varchar as sameascity
+from ashlar_boundarypolygon where boundary_id::text='c946ad5d-5cd9-4961-b42b-37c9c86194f9'
+
+
+  https://roadsafety.gov.ph/api/records/crosstabs/?aggregation_boundary=91daa8ae-05c8-40d1-a085-4a711c5c8de1&archived=False&calendar=gregorian&col_choices_path=person,properties,Gender&jsonb=%7B%22photo%22:%7B%22Description%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D%7D,%22person%22:%7B%22License+Number%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Address%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22First+Name%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Hospital%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D%7D,%22incidentDetails%22:%7B%22Severity%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Reporting+Agency%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Main+cause%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Email+of+Encoder%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Collision+type%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D%7D,%22vehicle%22:%7B%22Vehicle+type%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Insurance+details%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Chassis+number%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Make%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Model%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Plate+number%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D,%22Engine+number%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment_multiple%22%7D%7D,%22driverIncidentDetails%22:%7B%22Severity%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Reporting+Agency%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Main+cause%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Email+of+Encoder%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D,%22Collision+type%22:%7B%22pattern%22:%22rear+end%22,%22_rule_type%22:%22containment%22%7D%7D%7D&occurred_max=2020-04-27T18:30:00.000Z&occurred_min=2020-01-28T18:30:00.000Z&polygon_id=a4a0dc8b-8d70-4a98-a157-c8dacf1e1bd6&record_type=fe31e012-0d9b-4694-a86d-8c737e0c7672&row_choices_path=person,properties,Injury
+
+
+
+
+
+  When Django migration issue will occure run below command:
+
+      psql advanced_driver -c "GRANT ALL ON ALL TABLES IN SCHEMA public to driver;"
+      psql advanced_driver -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public to driver;"
+      psql advanced_driver -c "GRANT ALL ON ALL FUNCTIONS IN SCHEMA public to driver;"
+Openstack credentials:
+
+Username: ami.bajwala
+Password: ami.bajwala@aventior.com 

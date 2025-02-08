@@ -1,0 +1,121 @@
+version: '3'
+services:
+  postgres:
+    build:
+      context: ./
+      args:
+        - buildno=1
+      dockerfile: Dockerfile.database
+    volumes:
+      - ${WINDSHAFT_FILES}/driver_django/postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=driver
+      - POSTGRES_PASS=driver
+      - POSTGRES_DBNAME=driver
+      - DRIVER_DB_NAME=driver
+      - DRIVER_DB_HOST=database
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - DRIVER_DB_PORT=5432
+      - DRIVER_DB_USER=driver
+      - DRIVER_DB_PASSWORD=${PGPASSWORD}
+        #command: ["postgres", "-c", "log_statement=all"]
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_duration=on"]
+    container_name: database
+    image:
+      driver-database
+
+
+  redis-server:
+    image: redis
+    container_name: redis-server
+
+  windshaft:
+    command: server.js
+    container_name: windshaft
+    links:
+      - redis-server:redis
+    depends_on:
+      - redis-server
+      - postgres
+    ports:
+      - 5000:5000
+    volumes:
+            #- ${WINDSHAFT_FILES}/windshaft/:/opt/windshaft/
+      - ${WINDSHAFT_FILES}/windshaft/driver.js:/opt/windshaft/driver.js
+      - ${WINDSHAFT_FILES}/windshaft/healthCheck.js:/opt/windshaft/healthCheck.js
+      - ${WINDSHAFT_FILES}/windshaft/alphamarker.png:/opt/windshaft/alphamarker.png
+      - ${WINDSHAFT_FILES}/windshaft/server.js:/opt/windshaft/server.js
+    environment:
+      - DRIVER_DB_NAME=driver
+      - DRIVER_DB_USER=driver
+      - DRIVER_DB_PASSWORD=${PGPASSWORD}
+      - WINDSHAFT_DB_USER=driver
+      - WINDSHAFT_DB_PASSWORD=${PGPASSWORD}
+      - DRIVER_DB_HOST=database
+      - DRIVER_DB_PORT=5432
+      - DRIVER_APP_HOST=${PROTOCOL}://${HOST_NAME}
+      - DRIVER_REDIS_HOST=redis-server
+      - DRIVER_REDIS_PORT=6379
+      - HOST=${HOST_NAME}
+      - TIMEZONE=${TIMEZONE}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+    image: alien9/windshaft:latest
+
+  driver-django:
+    build:
+      context: ./
+    volumes:
+      - /var/www/static:/var/www/static
+      - /var/log/django/error.log:/error.log
+    depends_on:
+      - redis-server
+      - postgres
+    environment:
+      - HOST_URL=${PROTOCOL}://${HOST_NAME}
+      - DRIVER_DB_HOST=database
+      - DRIVER_DB_USER=driver
+      - DRIVER_DB_PORT=5432
+      - DRIVER_DB_NAME=driver
+      - DRIVER_DB_PASSWORD=${PGPASSWORD}
+      - DRIVER_REDIS_HOST=redis-server
+      - DRIVER_REDIS_PORT=6379
+      - STATIC_ROOT=/var/www/static/
+      - STATIC_URL=${PROTOCOL}://${HOST_NAME}/static/
+      - HOST=${HOST_NAME}
+      - TIMEZONE=${TIMEZONE}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+    ports:
+      - "4000:4000"
+    command: python manage.py runserver 0.0.0.0:4000
+    container_name: driver-new-tech
+    image: driver-django
+
+  driver-celery:
+    volumes:
+      - /var/www/static/media:/var/www/media
+    depends_on:
+      - redis-server
+      - postgres
+    environment:
+      - HOST_URL=${PROTOCOL}://${HOST_NAME}
+      - DJANGO_ENV=production
+      - DRIVER_DB_HOST=database
+      - DRIVER_DB_USER=driver
+      - DRIVER_DB_PORT=5432
+      - DRIVER_DB_NAME=driver
+      - DRIVER_DB_PASSWORD=${PGPASSWORD}
+      - DRIVER_REDIS_HOST=redis-server
+      - DRIVER_REDIS_PORT=6379
+      - STATIC_ROOT=/var/www/static/
+      - STATIC_URL=${PROTOCOL}://${HOST_NAME}/static/
+      - HOST=${HOST_NAME}
+      - TIMEZONE=${TIMEZONE}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      #- OAUTH_CLIENT_ID=""
+      #- OAUTH_CLIENT_SECRET=""
+    entrypoint: ["celery", "-A", "DRIVER", "worker", "--queues=taskworker", "--loglevel=info", "--concurrency=4"]
+    container_name: driver-celery-${CONTAINER_NAME}
+    image: driver-django

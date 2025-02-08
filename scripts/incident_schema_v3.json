@@ -1,0 +1,1021 @@
+{
+  "description": "",
+  "title": "",
+  "plural_title": "",
+  "definitions": {
+    "driverVideo": {
+      "type": "object",
+      "title": "Video",
+      "multiple": true,
+      "required": [
+        "_localId"
+      ],
+      "properties": {
+        "Video": {
+          "type": "string",
+          "media": {
+            "type": "video/mp4",
+            "binaryEncoding": "base64"
+          },
+          "fieldType": "video",
+          "isSearchable": false,
+          "propertyOrder": 0
+        },
+        "_localId": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          },
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "Description": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 1
+        }
+      },
+      "definitions": {},
+      "description": "Video Upload",
+      "plural_title": "Videos"
+    },
+    "driverNotes": {
+      "type": "object",
+      "title": "Notes",
+      "required": [
+        "_localId"
+      ],
+      "properties": {
+        "Notes": {
+          "type": "string",
+          "format": "textarea",
+          "fieldType": "text",
+          "isSearchable": false,
+          "propertyOrder": 0
+        },
+        "_localId": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          },
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+      },
+      "definitions": {},
+      "description": "Notes",
+      "plural_title": "Notes"
+    },
+    "driverPhoto": {
+      "type": "object",
+      "title": "Photo",
+      "multiple": true,
+      "required": [
+        "_localId",
+        "Picture"
+      ],
+      "properties": {
+        "Picture": {
+          "type": "string",
+          "media": {
+            "type": "image/jpeg",
+            "binaryEncoding": "base64"
+          },
+          "fieldType": "image",
+          "propertyOrder": 0
+        },
+        "_localId": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          },
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "Description": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 1
+        }
+      },
+      "definitions": {},
+      "description": "Pictures of the incident",
+      "plural_title": "Photos"
+    },
+    "driverPerson": {
+      "type": "object",
+      "title": "Person",
+      "multiple": true,
+      "required": [
+        "_localId",
+        "License Status"
+      ],
+      "properties": {
+        "Age": {
+          "type": "string",
+          "format": "number",
+          "fieldType": "text",
+          "minLength": 1,
+          "isSearchable": false,
+          "propertyOrder": 11
+        },
+        "DOB": {
+          "type": "string",
+          "format": "datetime",
+          "fieldType": "text",
+          "isSearchable": false,
+          "propertyOrder": 10
+        },
+        "Gender": {
+          "enum": [
+            "Male",
+            "Female",
+            "Other"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 5
+        },
+        "Helmet": {
+          "enum": [
+            "Worn",
+            "Not worn",
+            "Not worn correctly"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 17
+        },
+        "Injury": {
+          "enum": [
+            "Fatal",
+            "Serious",
+            "Minor",
+            "Not Injured"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 13
+        },
+        "Address": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 4
+        },
+        "Hospital": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 18
+        },
+        "_localId": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          },
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "Last Name": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 3
+        },
+        "Seat Belt": {
+          "enum": [
+            "Worn",
+            "Not worn",
+            "Not worn correctly"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 16
+        },
+        "First Name": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 1
+        },
+        "Involvement": {
+          "enum": [
+            "Pedestrian",
+            "Witness",
+            "Passenger",
+            "Driver"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 0
+        },
+        "Middle Name": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 2
+        },
+        "Driver error": {
+          "enum": [
+            "Fatigued/asleep",
+            "Inattentive",
+            "Too fast",
+            "Too close",
+            "No signal",
+            "Bad overtaking",
+            "Bad turning",
+            "Using cell phone",
+            "Driving Under the Influence (DUI)",
+            "Running Red Lights or Stop Signs",
+            "Improper Lane Changes",
+            "Aggressive/Reckless Driving",
+            "Failure to Yield Right of Way",
+            "Violating Traffic Laws"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 12
+        },
+        "License Type": {
+          "enum": [
+            "Private",
+            "Commercial"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 8
+        },
+        "Alcohol Level": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": false,
+          "propertyOrder": 15
+        },
+        "Alcohol/drugs": {
+          "enum": [
+            "Alcohol suspected",
+            "Drugs suspected"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 14
+        },
+        "License Number": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 7
+        },
+        "License Status": {
+          "enum": [
+            "Licensed",
+            "Unlicensed",
+            "Expired",
+            "Pending",
+            "Suspended",
+            "Revoked",
+            "Provisional",
+            "Restricted",
+            "Under Review",
+            "Renewed",
+            "Foreign "
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 6
+        },
+        "Type of Injury": {
+          "enum": [
+            "Amputation",
+            "Spinal injury ",
+            "Laceration",
+            "Mental Damage",
+            "Hearing loss",
+            "Loss of eyesight",
+            "Fractured limbs",
+            "Multiple injuries",
+            "Other"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 19
+        },
+        "Passenger factor": {
+          "enum": [
+            "Onboarding",
+            "Leaving",
+            "Occupying vehicle"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 22
+        },
+        "Employment Status": {
+          "enum": [
+            "Employed",
+            "Unemployed"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 20
+        },
+        "Island of License": {
+          "enum": [
+            "UP",
+            "SV"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 9
+        },
+        "Passenger Leaving": {
+          "enum": [
+            "Moving Vehicle",
+            "Stationary Vehicle"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 24
+        },
+        "Type of Employment": {
+          "enum": [
+            "Doctor",
+            "Engineer",
+            "Teacher",
+            "Lawyer",
+            "Nurse",
+            "Accountant",
+            "Farmer",
+            "Retail Worker",
+            "Construction Worker",
+            "Banker",
+            "Tour Guide",
+            "Hotel Staff"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 21
+        },
+        "Passenger Onboarding": {
+          "enum": [
+            "Moving Vehicle",
+            "Stationary Vehicle"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 23
+        },
+        "Passenger Occupying Vehicle": {
+          "enum": [
+            "By riding on side rails",
+            "By standing in the bus entrance",
+            "Overloaded",
+            "Other"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 25
+        },
+        "Medical condition impacting the ability to drive": {
+          "enum": [
+            "Heart conditions",
+            "Respiratory problems ",
+            "Muscular dystrophy ",
+            "Neurological disorders ",
+            "Mental health conditions ",
+            "Hearing impairments",
+            "Balance or coordination issues ",
+            "Cognitive impairments ",
+            "Sleep disorders ",
+            "Substance abuse issues ",
+            "Epilepsy",
+            "Eyesight issues",
+            "Amputations",
+            "Convulsions",
+            "High Blood pressure",
+            "Stroke"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 26
+        }
+      },
+      "definitions": {},
+      "description": "A person involved in the incident",
+      "plural_title": "People"
+    },
+    "driverVehicle": {
+      "type": "object",
+      "title": "Vehicle",
+      "multiple": true,
+      "required": [
+        "_localId",
+        "Vehicle License Status"
+      ],
+      "properties": {
+        "Damage": {
+          "enum": [
+            "None",
+            "Front",
+            "Rear",
+            "Right",
+            "Left",
+            "Roof",
+            "Multiple"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 6
+        },
+        "Defect": {
+          "enum": [
+            "None",
+            "Lights",
+            "Brakes",
+            "Engine",
+            "Wipers",
+            "Gear",
+            "Horn",
+            "Steering",
+            "Tires",
+            "Multiple"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 7
+        },
+        "Loading": {
+          "enum": [
+            "Legal",
+            "Overloaded",
+            "Unsafe Load",
+            "Other"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 8
+        },
+        "Surface": {
+          "enum": [
+            "Dry",
+            "Potholed",
+            "Graveled",
+            "Tarsealed",
+            "Edge badly defined",
+            "Slippery",
+            "Wet"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 12
+        },
+        "Maneuver": {
+          "enum": [
+            "Left Turn",
+            "Right turn",
+            "\"U\" turn",
+            "Cross traffic",
+            "Merging",
+            "Diverging",
+            "Overtaking",
+            "Going ahead",
+            "Reversing",
+            "Sudden start",
+            "Sudden stop",
+            "Parked off road",
+            "Parked on road"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 5
+        },
+        "_localId": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          },
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "Direction": {
+          "enum": [
+            "To East",
+            "To West",
+            "To North",
+            "To South"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": true,
+          "propertyOrder": 1
+        },
+        "Drive Type": {
+          "enum": [
+            "Right",
+            "Left"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 14
+        },
+        "License Type": {
+          "enum": [
+            "Private",
+            "Commercial"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 17
+        },
+        "Plate number": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 3
+        },
+        "Vehicle type": {
+          "enum": [
+            "Car",
+            "Van",
+            "SUV",
+            "Bus",
+            "Jeepney",
+            "Taxi (metered)",
+            "Truck (Pick-Up)",
+            "Truck (Rigid)",
+            "Truck (Articulated)",
+            "Truck (Fire)",
+            "Truck (Unknown)",
+            "Ambulance",
+            "Armored Car",
+            "Heavy Equipment",
+            "Motorcycle",
+            "Tricycle",
+            "Bicycle",
+            "Pedicab",
+            "Pedestrian",
+            "Push-Cart",
+            "Animal",
+            "Water Vessel",
+            "Electric Bike",
+            "Others"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": true,
+          "propertyOrder": 2
+        },
+        "Engine number": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 10
+        },
+        "Chassis number": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 11
+        },
+        "Classification": {
+          "enum": [
+            "Private",
+            "Commercial",
+            "Government",
+            "Diplomat",
+            "Rental"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 0
+        },
+        "License Number": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": false,
+          "propertyOrder": 16
+        },
+        "Make and Model": {
+          "enum": [
+            "Toyota Land Cruiser",
+            "Toyota Corolla",
+            "BMW 1-Series",
+            "Renault Clio",
+            "Opel Corsa",
+            "Opel Combo",
+            "Ford Ecosport",
+            "Huindai i30",
+            "Honda Jazz",
+            "Suzuki Swift",
+            "Renault Kwid",
+            "Nissan NV200",
+            "Kia K7"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": true,
+          "propertyOrder": 4
+        },
+        "Insurance details": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 9
+        },
+        "Island of License": {
+          "enum": [
+            "UP",
+            "SV"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 18
+        },
+        "Manufacturing Year": {
+          "enum": [
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 13
+        },
+        "Vehicle License Status": {
+          "enum": [
+            "Licensed",
+            "Unlicensed",
+            "Expired",
+            "Pending",
+            "Suspended",
+            "Revoked",
+            "Provisional",
+            "Restricted",
+            "Under Review",
+            "Renewed",
+            "Foreign "
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 15
+        }
+      },
+      "definitions": {},
+      "description": "A vehicle involved in the incident",
+      "plural_title": "Vehicles"
+    },
+    "driverCrashDiagram": {
+      "type": "object",
+      "title": "Crash Diagram",
+      "required": [
+        "_localId"
+      ],
+      "properties": {
+        "Image": {
+          "type": "string",
+          "media": {
+            "type": "image/jpeg",
+            "binaryEncoding": "base64"
+          },
+          "fieldType": "image",
+          "propertyOrder": 2
+        },
+        "_localId": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          },
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "Crash Type": {
+          "enum": [
+            "Pedestrian on foot",
+            "Vehicle from adjacent direction (intersection only)",
+            "Vehicle from opposing direction",
+            "Vehicle from same direction",
+            "Maneuvering",
+            "Overtaking",
+            "On path",
+            "Off path straight",
+            "Off path curve",
+            "Passenger and miscellaneous"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 0
+        },
+        "Movement Code": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": false,
+          "propertyOrder": 1
+        }
+      },
+      "definitions": {},
+      "description": "Crash Diagrams",
+      "plural_title": "Crash Diagrams"
+    },
+    "driverIncidentDetails": {
+      "type": "object",
+      "title": "Incident Details",
+      "details": true,
+      "multiple": false,
+      "required": [
+        "_localId",
+        "Severity",
+        "Main Cause"
+      ],
+      "properties": {
+        "Severity": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Fatal",
+              "Injury",
+              "Property Damage"
+            ]
+          },
+          "fieldType": "selectlist",
+          "displayType": "checkbox",
+          "uniqueItems": true,
+          "isSearchable": true,
+          "propertyOrder": 0
+        },
+        "_localId": {},
+        "Main Cause": {
+          "enum": [
+            "Vehicle defect",
+            "Road defect",
+            "Other"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": true,
+          "propertyOrder": 1
+        },
+        "Road Defect": {
+          "enum": [
+            "Pothole",
+            "Uneven Surface",
+            "Crack",
+            "Subsidence",
+            "Loose Gravel",
+            "Poor Drainage",
+            "Faded Markings",
+            "Obstruction",
+            "Missing Signage",
+            "Damaged Curb",
+            "Vegetation Overgrowth",
+            "Construction Hazard",
+            "Sinkhole",
+            "Guardrail Damage",
+            "Road Too Steep",
+            "Blind Intersection",
+            "Deteriorated Pavement",
+            "Tunnel Defect",
+            "Roadside Debris",
+            "Traffic Signal Malfunction",
+            "Lane Closure Without Warning",
+            "Pedestrian Crossing Hazard"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 6
+        },
+        "Collision Type": {
+          "enum": [
+            "Head on",
+            "Rear End",
+            "Right angle",
+            "Angle (Other)",
+            "Side swipe",
+            "Overturned vehicle",
+            "Hit object in road",
+            "Hit object off road",
+            "Hit parked vehicle",
+            "Hit pedestrian",
+            "Hit animal",
+            "Other"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": false,
+          "propertyOrder": 2
+        },
+        "Email of Encoder": {
+          "type": "string",
+          "format": "text",
+          "fieldType": "text",
+          "isSearchable": true,
+          "propertyOrder": 5
+        },
+        "Reporting Agency": {
+          "enum": [
+            "MOPP"
+          ],
+          "type": "string",
+          "fieldType": "selectlist",
+          "displayType": "select",
+          "isSearchable": true,
+          "propertyOrder": 3
+        },
+        "Location Approximate": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Yes"
+            ]
+          },
+          "fieldType": "selectlist",
+          "displayType": "checkbox",
+          "uniqueItems": true,
+          "isSearchable": false,
+          "propertyOrder": 4
+        }
+      },
+      "definitions": {},
+      "description": "Details for Incident",
+      "plural_title": "Incident Details"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "driverVideo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/driverVideo"
+      },
+      "title": "Video",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "Videos",
+      "propertyOrder": 6
+    },
+    "driverNotes": {
+      "$ref": "#/definitions/driverNotes",
+      "title": "Notes",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "Notes",
+      "propertyOrder": 5
+    },
+    "driverPhoto": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/driverPhoto"
+      },
+      "title": "Photo",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "Photos",
+      "propertyOrder": 4
+    },
+    "driverPerson": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/driverPerson"
+      },
+      "title": "Person",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "People",
+      "propertyOrder": 3
+    },
+    "driverVehicle": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/driverVehicle"
+      },
+      "title": "Vehicle",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "Vehicles",
+      "propertyOrder": 2
+    },
+    "driverCrashDiagram": {
+      "$ref": "#/definitions/driverCrashDiagram",
+      "title": "Crash Diagram",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "Crash Diagrams",
+      "propertyOrder": 1
+    },
+    "driverIncidentDetails": {
+      "$ref": "#/definitions/driverIncidentDetails",
+      "options": {
+        "collapsed": true
+      },
+      "plural_title": "Incident Details",
+      "propertyOrder": 0
+    }
+  }
+}

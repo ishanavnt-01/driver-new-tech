@@ -1,0 +1,431 @@
+key,value
+subtitle,Road Incident Data System
+driver.login,Login with DRIVER 2.0 Account
+driver.login.google.title,Login with Gmail Account
+username,Username
+username.required,Username is required
+password,Password
+password.required,Password is required
+login,Login
+create.account,Create an account
+google.login,Login with google
+analyze.filter,Analyze & filter »
+view.incidents,View all incidents »
+total.economic.loss,Total economic loss and societal harm: Last 90 days
+time.week,Time of Day  Day of Week: Last 90 Days
+saved.filters,Saved Filters
+30.days,30 Days
+90.days,90 Days
+365.days,365 Days
+last.two.weeks,Incidents: Last Two Weeks
+registration.form,Registration Form
+first.name,First Name
+first.name.required,First Name is required
+last.name,Last Name
+email,Email Address
+email.required,Email is required
+email.format,Email format should be
+email.example,joe@abc.com
+country.code,Country Code - Mobile Number
+mobile.length,Mobile should be 13 digit
+password.min.length,At least 4 characters
+register,Register
+intervention.form,Intervention Input Form
+intervention.location,Intervention Location & Time
+location,Location
+latitude,Latitude *
+longitude,Longitude *
+occurred.from,OCCURRED FROM *
+occurred.to,OCCURRED TO
+intervention.title,Intervention Detail
+type,Type *
+intervention.save,Save Intervention
+cancel,Cancel
+crash.title,Crash Factor Matrix - Individual
+export.csv,Export CSV
+exporting.csv,Exporting CSV
+no.records,No records found
+loading,Loading...
+crash.title.annual,Crash Factor Matrix - Annual
+dca.code,Movement Code
+crash.in.year,No. of crashes each year
+crash.direction,Direction of other vehicle
+crash.user.type,Type of road users
+surface,Surface
+light.condition,Light condition
+day.of.week,Day of week*
+date.range,Date Range
+filter.save,Saved filters
+filter.clear,Clear Filters
+add.record,Add a Record
+graphs,Graphs
+custom.report,Custom Report
+interventions,Interventions
+intervention.add,Add Intervention
+export.intervention,Export Interventions
+exporting.intervention,Exporting Interventions
+trafffic.enforcement,Traffic Enforcement Assignments
+total.loss,Total economic loss and societal harm
+collision.diagram,Create Collision Diagram
+export.crash.matrix,Export Crash Factor Matrix
+active.filter,Active Filters
+filter.msg,* To modify these filters  cancel and make adjustments on the page
+custom.report.row,ORGANIZE REPORT BY (ROWS)
+custom.report.col,ORGANIZE REPORT BY (COLUMNS)
+custom.report.geo,GEOGRAPHIC AGGREGATION (PAGES — OPTIONAL)
+save.image,Save as Image
+downloading,Downloading ...
+save.csv,Save as CSV
+processing,Processing ...
+crash.matrix,Crash Factor Matrix
+export.crash.individual,Export Crash Factor Matrix - Individual Records
+export.crash.annual,Export Crash Factor Matrix - Annual
+selected.boundary,Selected boundary
+boundary.msg,To select a different boundary make adjustments on the map page
+shift.start,SHIFT START
+shift.end,SHIFT END
+personnel,NUMBER OF PERSONNEL
+assignments,Assignments
+no.filters,No filters have been saved
+name,Name
+filters,Filters
+delete,Delete
+filter.add,Add New Saved Filter
+filter.name,Filter name
+save.filter,Save Filter
+close,Close
+irap.title,iRAP Star Rating Layer
+irap.clear,Clear iRAP layer
+search,Search
+please.wait,Please Wait....
+incident.history,Record History
+date.time,DATE & TIME
+merged,Merged
+view,View
+incident.details,Incident Details
+occurred1,Occurred
+modified1,Modified
+created1,Created
+modified.by1,Modified By
+occurred,OCCURRED
+modified,MODIFIED
+created,CREATED
+modified.by,MODIFIED BY
+location2,LOCATION
+latitude2,LATITUDE
+longitude2,LONGITUDE
+weather,WEATHER
+power.forecast,Powered by Forecast
+light,LIGHT
+merged.incidents,Merged Incidents
+field,Field
+signin,Sign In
+forgot.password,Forgot Password
+dataset.msg,Please select atleast one Dataset
+dataset,Dataset:
+smoothed,Smoothed
+raw,Raw
+before,Before
+after,After
+resolve,Resolve
+latitude1,Latitude
+longitude1,Longitude
+weather1,Weather
+light1,Light
+use.this.record,Use this record
+keep.both,Keep both unique records
+duplicate.incidents,Duplicate Incidents
+mark.unique,Mark as Unique
+save,Save
+incident.form,Incident Input Form
+incident.location,Incident Location & Time
+value.required,Value Required
+occurred2,OCCURRED *
+crash.type,Crash Type
+movement.code,Movement Code
+image,Image
+preview,Preview
+incident.preview,Incident Preview
+skip.preview,Skip and Preview
+edit,Edit
+history,History
+potential.duplicates,Potential Duplicates
+driver,DRIVER 2.0
+dashboard,Dashboard
+map,Map
+record.list,Record List
+all,All
+my.account,My Account
+role.request,Role request
+download.audit.logs,Download Audit Logs
+manage.duplicates,Manage duplicate records
+logout,Logout
+monthly.audit,Monthly Audit Logs
+year,Select Year :
+month,Select Month :
+download.csv,Download CSV
+account.info,Account Information
+first.name1,First Name :
+last.name1,Last Name :
+username1,Username :
+email1,E-mail :
+administrator,Administrator :
+groups,Groups :
+view1,View »
+main.cause,Main Cause
+reporting.agency,Reporting Agency
+role,Role:
+geography,Geography:
+region,Region:
+select.region,Select Region
+city,City:
+select.city,Select City
+organization,Organization:
+select.organization,Select Organization
+send.request,Send Request
+polygon,traffic enforcer assignments for Custom Polygon
+assignment,Assignment:
+assignment1,Assignment
+notes,Notes:
+view.next.image,View Historical Image >>
+view.previous.image,<< View Previous Image
+traffic.enforcement,Traffic Enforcement
+english,English
+filipino,Filipino
+crash.factor,Crash Factor
+edit.record,Edit a Record
+account,Account
+enforcement,Enforcement
+record.details,Record Details
+black.spots,Black Spots by Severity
+incidents,Incidents
+sun,Sun
+mon,Mon
+tue,Tue
+wed,Wed
+thu,Thu
+fri,Fri
+sat,Sat
+event.count,Event Count
+datetime.range.from,Date Time Range From:
+datetime.range.to,Date Time Range To:
+search.location,Search by location
+filter.name.keyword,Filter by name keyword
+crash.details,Crash Details
+mobile.NoRecord,No records on device. Tap round button to add an item.
+mobile.RoundBtn,Tap round button to add an item.
+mobile.Home,Home
+mobile.Records,Records
+mobile.noRecords,No Records
+mobile.userName,User Name
+mobile.email,E-Mail
+mobile.Administrator,Administrator
+mobile.driverGroup,Driver Group
+mobile.updateRecords,Update Records
+mobile.Next,Next
+mobile.cancelAlert,Are you sure you want to cancel?
+mobile.yes,Yes
+mobile.no,No
+mobile.dateOccured,Date Occurred
+mobile.select,Select
+mobile.ProceedTo,Proceed to
+mobile.isMandatory,is mandatory
+mobile.ok,Ok
+mobile.noItems,No items added yet.
+mobile.plusBtn,Tap on plus button to add an item.
+mobile.deleteAlert,Are you sure you want to delete this item ?
+mobile.album,Upload from Album
+mobile.picture,Take a picture
+mobile.draw,Draw
+mobile.editIncident,Edit Incident
+mobile.deleteIncident,Delete Incident
+mobile.updateincident,Update Incident
+mobile.rUsure,Are you sure ?
+mobile.enterUserName,Please enter username
+mobile.enterPswd,Please enter password
+mobile.UserOrPwdIncorrect,Username or password incorrect
+mobile.user_name,Username
+mobile.passWord,Password
+mobile.LoginWithGoogle,Login with Google
+mobile.roadSafety,Road Safety
+mobile.loginAlert,Login requires internet connection. Please try again.
+mobile.locPermsnReq,Location Permission Required
+mobile.locPermsnMsg,Please enable location permissions in settings.
+mobile.Done,Done
+mobile.switchingTabAlert,Switching the tab will cancel the filled entries.
+mobile.continue,Continue
+mobile.cancel,Cancel
+mobile.delete,Delete
+mobile.edit,Edit
+mobile.duplicateRecord,Duplicate record found. \n Select record to preview.
+mobile.continueDupRcrd,Continue to Save
+mobile.save,Save
+mobile.preview,Preview
+mobile.chooseColor,Choose Color
+mobile.logout,Logout
+mobile.language,Language
+export,Export
+print,Print
+to,To
+day.of.week1,Day of Week
+hour.of.day,Hour of Day
+INCIDENTS_layers,INCIDENTS
+INTERVENTIONS_layers,Interventions
+HEATMAP_layers,Heatmap
+BLACKSPOTS_layers,Blackspots
+CITY_PROVINCE_layers,CITY_PROVINCE
+REGIONS_layers,REGIONS
+Incident.Count,Incident Count
+Week.Of.Month,Week Of Month
+mobile.onlyAdministrator,Only Administrator can log in into the application!
+mobile.dontHaveCompledRcrd,You don't have any completed record to update.
+mobile.dontHvRcrd,You don't have any record to update.
+mobile.rcrdUpdateSuccessfully,Record updated successfully
+mobile.saveExit,Save & Exit
+mobile.saveExitConfMsg,Are you sure you want to save and exit?
+mobile.deleteConfirmationMsg,Are you sure you want to delete?
+Severity,Severity
+Fatal,Fatal
+Injury,Injury
+Property Damage,Property Damage
+Main Cause,Main Cause
+Vehicle defect,Vehicle defect
+Road defect,Road defect
+Human error,Other (see description)
+Collision Type,Collision Type
+Head on,Head on
+Rear End,Rear End
+Right angle,Right angle
+Angle (Other),Angle (Other)
+Side swipe,Side swipe
+Overturned vehicle,Overturned vehicle
+Hit object in road,Hit object in road
+Hit object off road,Hit object off road
+Hit parked vehicle,Hit parked vehicle
+Hit pedestrian,Hit pedestrian
+Hit animal,Hit animal
+Other (see description),Other (see description)
+Reporting Agency,Reporting Agency
+Other,Other
+Classification,Classification
+Private,Private
+Government,Government
+Public / For-Hire,Public / For-Hire
+Diplomat,Diplomat
+Direction,Direction
+To East,To East
+To West,To West
+To North,To North
+To South,To South
+Vehicle type,Vehicle type
+Car,Car
+Van,Van
+SUV,SUV
+Bus,Bus
+Jeepney,Jeepney
+Taxi (metered),Taxi (metered)
+Truck (Pick-Up),Truck (Pick-Up)
+Truck (Rigid),Truck (Rigid)
+Truck (Articulated),Truck (Articulated)
+Truck (Fire),Truck (Fire)
+Truck (Unknown),Truck (Unknown)
+Ambulance,Ambulance
+Armored Car,Armored Car
+Heavy Equipment,Heavy Equipment
+Motorcycle,Motorcycle
+Tricycle,Tricycle
+Bicycle,Bicycle
+Pedicab,Pedicab
+Pedestrian,Pedestrian
+Push-Cart,Push-Cart
+Horse-Driven Carriage (Tartanilla),Horse-Driven Carriage (Tartanilla)
+Animal,Animal
+Water Vessel,Water Vessel
+Electric Bike,Electric Bike
+Others,Others
+Habal-habal,Habal-habal
+Maneuver,Maneuver
+Left Turn,Left Turn
+Right turn,Right turn
+"""U"" turn","""U"" turn"
+Cross traffic,Cross traffic
+Merging,Merging
+Diverging,Diverging
+Overtaking,Overtaking
+Going ahead,Going ahead
+Reversing,Reversing
+Sudden start,Sudden start
+Sudden stop,Sudden stop
+Parked off road,Parked off road
+Parked on road,Parked on road
+Damage,Damage
+None,None
+Front,Front
+Rear,Rear
+Right,Right
+Left,Left
+Roof,Roof
+Multiple,Multiple
+Defect,Defect
+None,None
+Lights,Lights
+Brakes,Brakes
+Steering,Steering
+Tires,Tires
+Multiple,Multiple
+Loading,Loading
+Legal,Legal
+Overloaded,Overloaded
+Unsafe Load,Unsafe Load
+Other (see description),Other (see description)
+Surface,Surface
+Dry,Dry
+Wet,Wet
+Involvement,Involvement
+Pedestrian,Pedestrian
+Witness,Witness
+Passenger,Passenger
+Driver,Driver
+Gender,Gender
+Male,Male
+Female,Female
+Other,Other
+Driver error,Driver error
+Fatigued/asleep,Fatigued/asleep
+Inattentive,Inattentive
+Too fast,Too fast
+Too close,Too close
+No signal,No signal
+Bad overtaking,Bad overtaking
+Bad turning,Bad turning
+Using cell phone,Using cell phone
+Injury,Injury
+Fatal,Fatal
+Serious,Serious
+Minor,Minor
+Not Injured,Not Injured
+Alcohol/drugs,Alcohol/drugs
+Alcohol suspected,Alcohol suspected
+Drugs suspected,Drugs suspected
+Seat belt/helmet,Seat belt/helmet
+Seat belt/helmet worn,Seat belt/helmet worn
+Not worn,Not worn
+Not worn correctly,Not worn correctly
+Clear day,Clear day
+Clear Night,Clear Night
+Cloudy,Cloudy
+Hail,Hail
+Partly Cloudy Day,Partly Cloudy Day
+Partly Cloudy Night,Partly Cloudy Night
+Rain,Rain
+Sleet,Sleet
+Snow,Snow
+Thunderstorm,Thunderstorm
+Tornado,Tornado
+Wind,Wind
+Thunderstorm with light rain,Thunderstorm with light rain
+Thunderstorm with rain,Thunderstorm with rain
+Thunderstorm with heavy rain,Thunderstorm with heavy rain
+Light thunderstorm,Light thunderstorm
+Pending,Pending
+Completed,Completed

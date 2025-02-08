@@ -1,0 +1,8 @@
+# Use the official PostgreSQL 12 image as the base image
+FROM postgis/postgis:13-3.5
+
+ENV TZ ${TIMEZONE}
+
+# add init script
+RUN mkdir -p /docker-entrypoint-initdb.d
+COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/postgis.sh

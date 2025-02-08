@@ -1,0 +1,13 @@
+{% load static %}
+{% load get_item %}
+
+<fieldset class="module aligned {{ fieldset.classes }}">
+  <textarea style="display:none" name="{{ widget.name }}_loader" {% include "django/forms/widgets/attrs.html"  %}>
+{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+<app-jsoneditor textarea_id="{{widget.attrs|get_item:"id"}}" textarea_name="{{widget.name}}"></app-jsoneditor>
+<script src="{% static "dist/grouteditor/runtime.js" %}" defer></script>
+<script src="{% static "dist/grouteditor/polyfills.js" %}" defer></script>
+<script src="{% static "dist/grouteditor/styles.js" %}" defer></script>
+<script src="{% static "dist/grouteditor/vendor.js" %}" defer></script>
+<script src="{% static "dist/grouteditor/main.js" %}" defer></script>
+</fieldset>

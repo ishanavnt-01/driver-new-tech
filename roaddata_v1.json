@@ -1,0 +1,31 @@
+[
+  {"main_code":"land_use_passenger_side",
+"sub_code":4,
+"short_desc":"one side",
+"long_desc":"Park vehicles only left side",
+"image" : "base64"
+},
+{
+"main_code":"land_use_driver_side",
+"sub_code":4,
+"short_desc":"one side",
+"long_desc":"Park vehicles only left side",
+"image" : "base64"
+},
+
+{
+"main_code":"area_type",
+"sub_code":2,
+"short_desc":"one side",
+"long_desc":"Park vehicles only left side",
+"image" : "base64"
+},
+
+{
+"main_code":"vehicle parking",
+"sub_code":2,
+"short_desc":"one side",
+"long_desc":"Park vehicles only left side",
+"image" : "base64"
+}
+]
